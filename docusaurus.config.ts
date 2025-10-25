@@ -78,14 +78,14 @@ const config: Config = {
       title: 'Trần Đức Thiện',
       logo: {
         alt: 'Trần Đức Thiện Logo',
-        src: 'img/logo.svg',
+        src: 'https://avatars.githubusercontent.com/thiencode',
       },
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'About',
+          label: 'Documentation',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
@@ -103,7 +103,7 @@ const config: Config = {
           items: [
             {
               label: 'About',
-              to: '/docs/about-me',
+              to: '/docs/About-me',
             },
           ],
         },
@@ -132,8 +132,8 @@ const config: Config = {
               to: '/blog',
             },
             {
-              label: 'About',
-              to: '/docs/about-me',
+              label: 'Documentation',
+              to: '/docs/About-me',
             },
           ],
         },
