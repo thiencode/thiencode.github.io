@@ -1,0 +1,103 @@
+---
+title: Week 1 - Introduction
+sidebar_label: Week 1 - Introduction
+description: Notes and diagrams for SW206DL01 - Week 1
+---
+
+# Week 1: Introduction to Algorithms
+
+## Learning Objectives
+
+- Understand what algorithms are and why they matter
+- Learn about algorithm complexity and performance analysis
+- Introduction to basic algorithm design principles
+
+## What is an Algorithm?
+
+An algorithm is a step-by-step procedure for solving a problem or accomplishing a task. In computer science, algorithms are essential for processing data and performing computations efficiently.
+
+### Key Characteristics of Algorithms
+
+1. **Input**: Algorithms take some input data
+2. **Output**: They produce a result
+3. **Definiteness**: Each step must be clearly defined
+4. **Finiteness**: Must terminate after a finite number of steps
+5. **Effectiveness**: Each step must be executable
+
+## Algorithm Complexity
+
+### Time Complexity
+Measures how the running time of an algorithm increases with the size of the input.
+
+### Space Complexity
+Measures how much memory an algorithm uses relative to the input size.
+
+## Basic Examples
+
+### Example 1: Linear Search
+
+```javascript
+function linearSearch(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === target) {
+            return i;
+        }
+    }
+    return -1;
+}
+```
+
+**Time Complexity**: O(n) - Linear time
+**Space Complexity**: O(1) - Constant space
+
+### Example 2: Binary Search
+
+```javascript
+function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+
+        if (arr[mid] === target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return -1;
+}
+```
+
+**Time Complexity**: O(log n) - Logarithmic time
+**Space Complexity**: O(1) - Constant space
+
+## Algorithm Analysis
+
+### Asymptotic Notation
+
+1. **Big O (O)**: Upper bound - worst case
+2. **Big Omega (Ω)**: Lower bound - best case
+3. **Big Theta (Θ)**: Tight bound - average case
+
+### Common Time Complexities
+
+- O(1) - Constant time
+- O(log n) - Logarithmic time
+- O(n) - Linear time
+- O(n log n) - Linearithmic time
+- O(n²) - Quadratic time
+- O(2ⁿ) - Exponential time
+
+## Next Week
+
+In the next lecture, we'll dive deeper into algorithm complexity analysis and learn how to formally analyze the performance of algorithms.
+
+## References
+
+- [Introduction to Algorithms (CLRS)](https://mitpress.mit.edu/books/introduction-algorithms)
+- [Algorithms Design Manual](https://www.algorist.com/)
