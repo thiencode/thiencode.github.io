@@ -1,6 +1,8 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -25,15 +27,40 @@ const config: Config = {
   organizationName: 'thiencode', // Usually your GitHub org/user name.
   projectName: 'thiencode.github.io', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // Internationalization configuration
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'vi'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+      },
+      vi: {
+        label: 'Tiếng Việt',
+        direction: 'ltr',
+      },
+    },
   },
+
+  themes: ['@docusaurus/theme-live-codeblock', '@docusaurus/theme-mermaid'],
+  
+  markdown: {
+    mermaid: true,
+  },
+
+  plugins: [
+    [
+      '@docusaurus/plugin-google-gtag',
+      { trackingID: 'G-XXXXXXXXXX', anonymizeIP: true },
+    ],
+  ],
+
+  stylesheets: [
+    'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+  ],
 
   presets: [
     [
@@ -41,6 +68,8 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -83,7 +112,7 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'docs',
           position: 'left',
           label: 'Documentation',
         },
@@ -91,6 +120,10 @@ const config: Config = {
         {
           href: 'https://github.com/thiencode/thiencode.github.io',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          type: 'localeDropdown',
           position: 'right',
         },
       ],
@@ -103,7 +136,7 @@ const config: Config = {
           items: [
             {
               label: 'About',
-              to: '/docs/About-me',
+              to: '/docs/about/About-me',
             },
           ],
         },
@@ -133,7 +166,7 @@ const config: Config = {
             },
             {
               label: 'Documentation',
-              to: '/docs/About-me',
+              to: '/docs/',
             },
           ],
         },

@@ -1,0 +1,197 @@
+---
+alwaysApply: true
+---
+## ⚙️ Configuration Rules
+
+Cursor should maintain the following settings and behavior:
+
+### 🧩 Plugins & Dependencies
+Install and configure using `pnpm`:
+
+```bash
+pnpm add remark-mermaidjs remark-math rehype-katex @docusaurus/theme-live-codeblock @docusaurus/plugin-sitemap @docusaurus/plugin-google-gtag
+```
+
+**`docusaurus.config.ts`** must include:
+```ts
+import remarkMermaid from 'remark-mermaidjs';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
+export default {
+  markdown: {
+    mermaid: true,
+    remarkPlugins: [remarkMermaid, remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
+  themes: ['@docusaurus/theme-live-codeblock'],
+  plugins: [
+    '@docusaurus/plugin-sitemap',
+    [
+      '@docusaurus/plugin-google-gtag',
+      { trackingID: 'G-XXXXXXXXXX', anonymizeIP: true },
+    ],
+  ],
+  stylesheets: [
+    'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+  ],
+};
+```
+
+---
+
+## 🧱 Sidebar Configuration Template
+
+**`sidebars.ts`** should reflect this structure:
+```ts
+export default {
+  docs: [
+    'intro',
+    {
+      type: 'category',
+      label: 'About & Portfolio',
+      items: ['about/About-me', 'cv/index'],
+    },
+    {
+      type: 'category',
+      label: 'HSU',
+      items: [
+        {
+          type: 'category',
+          label: 'SW206DL01 - Algorithms Analysis and Design',
+          items: [
+            'hsu/SW206DL01-Algorithms-Analysis-and-Design/index',
+            'hsu/SW206DL01-Algorithms-Analysis-and-Design/week1-introduction',
+            'hsu/SW206DL01-Algorithms-Analysis-and-Design/week2-algorithm-complexity',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'IT206DL01 - Object-oriented Analysis & Design',
+          items: [
+            'hsu/IT206DL01-Object-Oriented-Analysis-and-Design/index',
+            'hsu/IT206DL01-Object-Oriented-Analysis-and-Design/week1-intro-to-OOAD',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Samples (Docusaurus Docs)',
+      items: [
+        'samples/tutorial-basics/create-a-page',
+        'samples/tutorial-basics/create-a-document',
+        'samples/tutorial-basics/deploy-your-site',
+        'samples/tutorial-extras/manage-docs-versions',
+      ],
+    },
+  ],
+};
+```
+
+---
+
+## 🪄 Cursor Behavior Rules
+
+- **Do not modify** `docs/about/About-me.mdx` (it’s finalized).  
+- **When adding new course folders** under `/docs/hsu/`, use consistent naming:  
+  `COURSECODE-Course-Title`  
+  e.g., `SW206DL01-Algorithms-Analysis-and-Design`
+- **Each course folder must contain:**
+  - `index.mdx` – Overview  
+  - `weekX-topic.mdx` – Lesson files  
+  - `diagrams/` – Optional `.mmd` / `.plantuml` diagrams
+- **Auto-generate frontmatter** for each new `.mdx`:
+  ```mdx
+  ---
+  title: Week 1 - Introduction
+  sidebar_label: Week 1 - Introduction
+  description: Notes and diagrams for SW206DL01
+  ---
+  ```
+- **Automatically register** new docs in `sidebars.ts`
+- **Group** all Docusaurus sample docs under `docs/samples/`
+- **Render** math and diagrams correctly in Markdown using:
+  - `remark-mermaidjs` for flowcharts / UML
+  - `remark-math` + `rehype-katex` for LaTeX math
+- **Enable** live code blocks via `@docusaurus/theme-live-codeblock`
+- **Ensure** sitemap and analytics plugins are active
+
+---
+
+## ✍️ Example Diagram Usage
+
+
+```mermaid
+graph TD
+A[Start] --> B[Initialize]
+B --> C{Condition?}
+C -->|True| D[Execute Step]
+C -->|False| E[End]
+```
+
+---
+
+## ✅ Goal for Cursor
+
+Cursor should maintain a **clean modular Docusaurus site**, where:
+
+- Portfolio and personal info are under `about/` and `cv/`
+- HSU learning materials are course-based and expandable
+- Default docs are moved under `samples/`
+- Diagrams and math rendering work seamlessly
+- About-me.mdx remains untouched
+- Sidebar structure remains consistent
+- Thêm phần hướng dẫn cấu hình i18n (English–Vietnamese).
+- Giúp Cursor tự động tạo cấu trúc thư mục i18n/vi và i18n/en khi thêm ngôn ngữ mới.
+
+---
+
+# Cursor Project Rules for Docusaurus Personal Site
+
+project:
+  name: "thiencode.github.io"
+  type: "docusaurus"
+  purpose: >
+    A personal GitHub Pages site serving as portfolio, blog, and academic documentation hub.
+    Contains three key sections: About/Portfolio, Blog, and HSU learning materials.
+
+structure:
+  about: docs/about/About-me.mdx
+  cv: docs/cv/index.mdx
+  hsu:
+    SW206DL01: docs/hsu/SW206DL01-Algorithms-Analysis-and-Design/
+    IT206DL01: docs/hsu/IT206DL01-Object-Oriented-Analysis-and-Design/
+  samples: docs/samples/
+
+rules:
+  - When adding new course folders under `docs/hsu/`, ensure consistent naming convention:
+      COURSECODE-Course-Title (e.g., SW206DL01-Algorithms-Analysis-and-Design)
+  - Each course should include:
+      - index.mdx (overview)
+      - weekX-topic.mdx (content)
+      - diagrams/ (optional .mmd or .plantuml)
+  - Automatically register new files into `sidebars.ts`
+  - Preserve About-me.mdx content without modification
+  - Group Docusaurus sample docs under `docs/samples/`
+  - Use remark-mermaidjs for diagrams, remark-math + rehype-katex for math expressions
+  - Use consistent metadata headers:
+      ---
+      title: Week 1 - Introduction
+      sidebar_label: Week 1 - Introduction
+      description: Notes and diagrams for SW206DL01
+      ---
+
+plugins:
+  - remark-mermaidjs
+  - remark-math
+  - rehype-katex
+  - @docusaurus/theme-live-codeblock
+  - @docusaurus/plugin-sitemap
+  - @docusaurus/plugin-google-gtag
+
+behavior:
+  - Generate preview suggestions for new .mdx files under docs/hsu/*
+  - Keep existing About-me.mdx intact
+  - Maintain semantic sidebar hierarchy
+  - When refactoring, preserve folder names and Markdown frontmatter

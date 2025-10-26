@@ -1,0 +1,236 @@
+---
+sidebar_position: 5
+title: Diagrams Demo
+description: Examples of Mermaid and PlantUML diagrams
+---
+
+# Diagrams Demo
+
+This page demonstrates how to use Mermaid and PlantUML diagrams in Docusaurus.
+
+## Mermaid Diagrams
+
+Mermaid is now supported with the official `@docusaurus/theme-mermaid` theme!
+
+### Flow Chart
+
+```mermaid
+graph TD
+    A[Start] --> B{Is it working?}
+    B -->|Yes| C[Great!]
+    B -->|No| D[Debug]
+    D --> B
+    C --> E[End]
+```
+
+### Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant Backend
+    participant Database
+    
+    User->>Frontend: Request data
+    Frontend->>Backend: API call
+    Backend->>Database: Query
+    Database-->>Backend: Result
+    Backend-->>Frontend: Response
+    Frontend-->>User: Display data
+```
+
+### Class Diagram
+
+```mermaid
+classDiagram
+    class Animal {
+        +String name
+        +int age
+        +makeSound()
+    }
+    class Dog {
+        +String breed
+        +bark()
+    }
+    class Cat {
+        +String color
+        +meow()
+    }
+    
+    Animal <|-- Dog
+    Animal <|-- Cat
+```
+
+### State Diagram
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Processing: Start
+    Processing --> Success: Complete
+    Processing --> Error: Failed
+    Success --> [*]
+    Error --> Idle: Retry
+    Error --> [*]: Give up
+```
+
+### Gantt Chart
+
+```mermaid
+gantt
+    title Project Timeline
+    dateFormat YYYY-MM-DD
+    section Phase 1
+    Requirements      :done, req, 2024-01-01, 2024-01-15
+    Design           :done, des, 2024-01-16, 2024-02-01
+    section Phase 2
+    Development      :active, dev, 2024-02-02, 2024-03-15
+    Testing          :test, 2024-03-16, 2024-04-01
+    section Phase 3
+    Deployment       :deploy, 2024-04-02, 2024-04-10
+```
+
+### Entity Relationship Diagram
+
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+    
+    CUSTOMER {
+        string name
+        string email
+        string phone
+    }
+    ORDER {
+        int orderNumber
+        date orderDate
+        string status
+    }
+    LINE-ITEM {
+        string productCode
+        int quantity
+        float price
+    }
+```
+
+## PlantUML Diagrams
+
+PlantUML can be used by embedding images from PlantUML server or using external tools.
+
+### Option 1: Using PlantUML Server
+
+You can generate diagrams using the [PlantUML Web Server](http://www.plantuml.com/plantuml/uml/):
+
+![Use Case Diagram](https://www.plantuml.com/plantuml/png/NP31JiCm38RlUGgh9pZi1T0qRUoCc9Z4tSIcYveuLU9gL8XtXsJDf7Aplq_k_pVxh9Xq2jvu_bJG2Cdr5mLoYQswA2OFJaPC6614Es3FPvqzGz4elMU3LcE2xZXbZO5J1vZ1BakJ1mfEgi4o6NC_X-vLl1E6yoMEevCUpdDM3Xry6u27vnIlcU6K8arMysFvn4TbnHw8IkKZ9gq6YGe-NjWESRenkon5lE30SC8viDpaYFED2_R_Ka9bnRuxli8RZp4jAjNP_1ZJ_XCscrthjM98j0QjpfgM7gO-JLbRzXsqHDEksn4ymNRhnFg9UBSpIBGAgPg_b8N-x9w5fk1_0G00)
+
+### Option 2: Embed PlantUML as Images
+
+Create your diagram at [PlantUML Editor](https://www.plantuml.com/plantuml/uml/) and embed the image URL.
+
+### Option 3: Use Mermaid Alternative
+
+For many UML diagrams, Mermaid provides excellent alternatives:
+
+#### Component-like Diagram with Mermaid
+
+```mermaid
+graph TB
+    subgraph Frontend
+        React[React App]
+        Redux[Redux Store]
+        API[API Client]
+    end
+    
+    subgraph Backend
+        REST[REST API]
+        Logic[Business Logic]
+        DB[(Database)]
+    end
+    
+    React --> Redux
+    React --> API
+    API --> REST
+    REST --> Logic
+    Logic --> DB
+```
+
+#### User Flow Diagram
+
+```mermaid
+flowchart TD
+    Start([User opens app]) --> Check{Is logged in?}
+    Check -->|Yes| Dashboard[Show dashboard]
+    Check -->|No| Login[Show login page]
+    Login --> Credentials[User enters credentials]
+    Credentials --> Valid{Valid credentials?}
+    Valid -->|Yes| Success[Login successful]
+    Valid -->|No| Error[Show error message]
+    Success --> Dashboard
+    Error --> End([Stop])
+    Dashboard --> Actions[User performs actions]
+    Actions --> End
+```
+
+## Tips for Using Diagrams
+
+### Mermaid Tips
+
+1. **Syntax**: Use triple backticks with `mermaid` language identifier
+2. **Live Preview**: Diagrams render automatically in development
+3. **Theming**: Mermaid diagrams adapt to light/dark mode
+4. **Documentation**: [Mermaid Official Docs](https://mermaid.js.org/)
+
+### PlantUML Tips
+
+1. **External Server**: Use PlantUML web server to generate diagram URLs
+2. **Image Embedding**: Embed generated diagram images in your docs
+3. **Local Tools**: Use PlantUML desktop tools for complex diagrams
+4. **Documentation**: [PlantUML Official Site](https://plantuml.com/)
+5. **Mermaid Alternative**: Consider using Mermaid for most diagram needs
+
+### Best Practices
+
+✅ **Do:**
+- Keep diagrams simple and focused
+- Use meaningful labels and descriptions
+- Test diagrams in both light and dark modes
+- Add comments to explain complex parts
+
+❌ **Don't:**
+- Create overly complex diagrams
+- Use tiny font sizes
+- Forget to test diagram rendering
+- Mix too many concepts in one diagram
+
+## Performance Considerations
+
+- **Mermaid**: Rendered client-side, fast and responsive
+- **PlantUML Images**: Pre-generated, fast loading
+- **Large diagrams**: Consider splitting into multiple smaller diagrams
+- **Build time**: Mermaid diagrams are compiled during build
+
+## Troubleshooting
+
+### Mermaid not rendering?
+
+1. Check syntax errors in your diagram code
+2. Verify `@docusaurus/theme-mermaid` is in themes array
+3. Ensure `markdown.mermaid: true` is set in config
+4. Clear cache: `pnpm clear` and rebuild
+
+### PlantUML images not showing?
+
+1. Check if the PlantUML server URL is accessible
+2. Verify the diagram syntax is correct
+3. Try regenerating the diagram URL
+4. Consider using local PlantUML installation for offline work
+
+## Learn More
+
+- [Docusaurus Mermaid Documentation](https://docusaurus.io/docs/markdown-features/diagrams)
+- [Mermaid Live Editor](https://mermaid.live/)
+- [PlantUML Web Server](http://www.plantuml.com/plantuml/uml/)
+

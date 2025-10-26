@@ -1,0 +1,26 @@
+{
+  "version.label": {
+    "message": "Current",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.About & Portfolio": {
+    "message": "Giới thiệu & Portfolio",
+    "description": "The label for category 'About & Portfolio' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.HSU": {
+    "message": "HSU",
+    "description": "The label for category 'HSU' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.Samples (Docusaurus Docs)": {
+    "message": "Mẫu (Docusaurus Docs)",
+    "description": "The label for category 'Samples (Docusaurus Docs)' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.SW206DL01 - Algorithms Analysis and Design": {
+    "message": "SW206DL01 - Algorithms Analysis and Design",
+    "description": "The label for category 'SW206DL01 - Algorithms Analysis and Design' in sidebar 'docs'"
+  },
+  "sidebar.docs.category.IT206DL01 - Object-oriented Analysis & Design": {
+    "message": "IT206DL01 - Object-oriented Analysis & Design",
+    "description": "The label for category 'IT206DL01 - Object-oriented Analysis & Design' in sidebar 'docs'"
+  }
+}
