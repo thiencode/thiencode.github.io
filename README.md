@@ -37,7 +37,7 @@ thiencode.github.io/
 │   ├── hsu/                       # HSU course materials
 │   │   ├── SW206DL01-Algorithms-Analysis-and-Design/
 │   │   │   ├── index.mdx         # Course overview
-│   │   │   ├── week1-introduction.mdx
+│   │   │   ├── week-1.md
 │   │   │   └── week2-algorithm-complexity.mdx
 │   │   └── IT206DL01-Object-Oriented-Analysis-and-Design/
 │   │       ├── index.mdx         # Course overview

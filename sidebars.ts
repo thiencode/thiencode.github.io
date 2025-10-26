@@ -29,8 +29,9 @@ const sidebars: SidebarsConfig = {
           label: 'SW206DL01 - Algorithms Analysis and Design',
           items: [
             'hsu/SW206DL01-Algorithms-Analysis-and-Design/index',
-            'hsu/SW206DL01-Algorithms-Analysis-and-Design/week1-introduction',
-            'hsu/SW206DL01-Algorithms-Analysis-and-Design/week2-algorithm-complexity',
+            'hsu/SW206DL01-Algorithms-Analysis-and-Design/week-1',
+            'hsu/SW206DL01-Algorithms-Analysis-and-Design/week-2',
+            'hsu/SW206DL01-Algorithms-Analysis-and-Design/week-3',
           ],
         },
         {
